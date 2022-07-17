@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
+import VideoDetail from "./components/VideoDetail";
+import ChannelDetail from "./components/ChannelDetail";
+import SearchFeed from "./components/SearchFeed";
+import Navbar from "./components/Navbar";
+import Feed from "./components/Feed";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+    <Box sx={{ p: 1, width: { xl: "1370px", md: "100%" }, margin: "auto" }}>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Feed />} />
+        <Route path="/video/:id" element={<VideoDetail />} />
+        <Route path="/channel/:id" element={<ChannelDetail />} />
+        <Route path="/search/:searchTerm" element={<SearchFeed />} />
+      </Routes>
+      <Typography
+        component="h2"
+        style={{
+          color: "#333",
+          marginTop: "5rem",
+          display: "flex",
+          justifyContent: "center",
+          gap: ".6rem",
+        }}
+      >
+        Created by
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          style={{
+            color: "#9e9e9e",
+            textDecoration: "none",
+          }}
+          href="https://github.com/RasulSonmez"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          {" "}
+          Rasul Sonmez
+        </a>{" "}
+      </Typography>
+    </Box>
   );
 }
 
